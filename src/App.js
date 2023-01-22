@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
-import EmailList from "./features/emailList/EmaiList";
+import EmailBody from "./features/emailBody/EmailBody";
+import EmailList from "./features/emailList/EmailList";
 
 function App() {
     return (
         <div className="App">
             <EmailList />
+            <EmailBody />
         </div>
     );
 }

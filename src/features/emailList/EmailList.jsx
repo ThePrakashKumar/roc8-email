@@ -18,6 +18,7 @@ const EmailList = () => {
                 {emails.length > 0 ? (
                     emails.map((email) => (
                         <EmailListCard
+                            id={email.id}
                             from={email.from.name}
                             shortDescription={email.short_description}
                             subject={email.subject}
