@@ -4,19 +4,42 @@ import EmailListCard from "../../components/EmaiListCard";
 import { getEmail } from "./emailListSlice";
 const EmailList = () => {
     const dispatch = useDispatch();
-    const { emails, number } = useSelector((state) => state.emailList);
+    const { emails, readEmail, favoriteEmail } = useSelector(
+        (state) => state.emailList
+    );
+
+    const { currentFilter } = useSelector((state) => state.filter);
 
     useEffect(() => {
         console.log("calling");
         dispatch(getEmail());
     }, []);
 
+    const filterEmail = () => {
+        // if currentFilter = "" show all emails
+        if (currentFilter === "") {
+            return emails;
+        } else {
+            return emails.filter((email) => {
+                // if currentFilter = "unread" show all email except those are in read array
+                if (currentFilter === "unread") {
+                    return !readEmail.includes(email.id);
+                } else if (currentFilter === "read") {
+                    return readEmail.includes(email.id);
+                    // if currentFilter = "favorite" show all the emails which are in favorite array
+                } else {
+                    return favoriteEmail.includes(email.id);
+                }
+            });
+        }
+    };
+
     return (
         <div>
-            Email List {number}
+            Email List
             <div>
                 {emails.length > 0 ? (
-                    emails.map((email) => (
+                    filterEmail(emails).map((email) => (
                         <EmailListCard
                             id={email.id}
                             from={email.from.name}

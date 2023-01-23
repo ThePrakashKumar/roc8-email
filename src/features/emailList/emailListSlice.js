@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchEmail } from "./emailListAPI";
 
-const initialState = { status: "", emails: [], number: 5 };
+const initialState = {
+    status: "",
+    emails: [],
+    readEmail: [],
+    favoriteEmail: [],
+};
 
 export const getEmail = createAsyncThunk("emailList/getEmail", () =>
     fetchEmail()
@@ -10,7 +15,14 @@ export const getEmail = createAsyncThunk("emailList/getEmail", () =>
 const emailListSlice = createSlice({
     name: "emailList",
     initialState,
-    reducers: {},
+    reducers: {
+        addRead: (state, action) => {
+            state.readEmail.push(action.payload);
+        },
+        addFavorite: (state, action) => {
+            state.favoriteEmail.push(action.payload);
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getEmail.pending, (state) => {
@@ -23,4 +35,5 @@ const emailListSlice = createSlice({
     },
 });
 
+export const { addRead, addFavorite } = emailListSlice.actions;
 export default emailListSlice.reducer;
