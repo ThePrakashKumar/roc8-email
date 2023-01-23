@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import EmailBody from "./features/emailBody/EmailBody";
 import EmailList from "./features/emailList/EmailList";
 import Filter from "./features/filter/Filter";
