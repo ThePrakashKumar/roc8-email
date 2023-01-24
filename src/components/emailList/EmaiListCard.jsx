@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getEmailBody } from "../../features/emailBody/emailBodySlice";
 import { addRead } from "../../features/emailList/emailListSlice";
+import Avatar from "../avatar/Avatar";
 import DateComponent from "../dateComponent/DateComponent";
 import "./EmailListCard.css";
 
@@ -16,15 +17,10 @@ const EmailListCard = ({ id, from, subject, shortDescription, date }) => {
         dispatch(getEmailBody(id));
     };
 
-    const nameFirstLetter = (name) => {
-        return name[0].toUpperCase();
-    };
-
     const isThere = (arr, id) => {
         return arr.includes(id);
     };
 
-    console.log(from);
     return (
         <div
             onClick={clickHandler}
@@ -32,9 +28,7 @@ const EmailListCard = ({ id, from, subject, shortDescription, date }) => {
             style={{ background: isThere(readEmail, id) && "#F2F2F2" }}
         >
             <div className="emailList-card_left-container">
-                <span className="emailList-card_profile">
-                    {nameFirstLetter(from.name)}
-                </span>
+                <Avatar name={from.name} />
             </div>
             <div className="emailList-card_right-container">
                 <p className="emailList-card_from">

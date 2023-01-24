@@ -6,18 +6,8 @@
     margin-bottom: 2rem;
 }
 
-.emailList-card_profile {
-    background: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 2.5rem;
-    font-weight: 500;
-    margin-right: 15px;
+.emailList-card_right-container {
+    margin-left: 15px;
 }
 
 .emailList-card_date-container {
