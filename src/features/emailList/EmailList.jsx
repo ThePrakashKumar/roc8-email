@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import EmailListCard from "../../components/EmaiListCard";
+import EmailListCard from "../../components/emailList/EmaiListCard";
 import { getEmail } from "./emailListSlice";
 const EmailList = () => {
     const dispatch = useDispatch();
@@ -11,7 +11,6 @@ const EmailList = () => {
     const { currentFilter } = useSelector((state) => state.filter);
 
     useEffect(() => {
-        console.log("calling");
         dispatch(getEmail());
     }, []);
 
@@ -36,17 +35,10 @@ const EmailList = () => {
 
     return (
         <div>
-            Email List
             <div>
                 {emails.length > 0 ? (
                     filterEmail(emails).map((email) => (
-                        <EmailListCard
-                            id={email.id}
-                            from={email.from.name}
-                            shortDescription={email.short_description}
-                            subject={email.subject}
-                            date={email.date}
-                        />
+                        <EmailListCard {...email} />
                     ))
                 ) : (
                     <span>loading</span>

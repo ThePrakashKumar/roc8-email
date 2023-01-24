@@ -1,6 +1,7 @@
 .filter {
     display: flex;
     align-items: center;
+    margin-bottom: 1.8rem;
 }
 
 .filter_heading {

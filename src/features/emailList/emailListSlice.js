@@ -29,7 +29,6 @@ const emailListSlice = createSlice({
                 state.status = "loading";
             })
             .addCase(getEmail.fulfilled, (state, action) => {
-                console.log(action.payload);
                 state.emails = action.payload.list;
             });
     },

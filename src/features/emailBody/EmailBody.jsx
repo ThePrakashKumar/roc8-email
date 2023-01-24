@@ -4,7 +4,6 @@ import { addFavorite } from "../emailList/emailListSlice";
 const EmailBody = () => {
     const dispatch = useDispatch();
     const { id } = useSelector((state) => state.emailBody);
-    console.log(id);
     return (
         <div>
             {id && (
