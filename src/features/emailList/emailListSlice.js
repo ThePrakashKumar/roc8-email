@@ -21,7 +21,13 @@ const emailListSlice = createSlice({
             state.readEmail.push(action.payload);
         },
         addFavorite: (state, action) => {
+            console.log("add", action.payload);
             state.favoriteEmail.push(action.payload);
+        },
+        removeFavorite: (state, action) => {
+            state.favoriteEmail = state.favoriteEmail.filter(
+                (email) => email !== action.payload
+            );
         },
         toggleViewMode: (state) => {
             state.viewMode = true;
@@ -38,5 +44,6 @@ const emailListSlice = createSlice({
     },
 });
 
-export const { addRead, addFavorite, toggleViewMode } = emailListSlice.actions;
+export const { addRead, addFavorite, removeFavorite, toggleViewMode } =
+    emailListSlice.actions;
 export default emailListSlice.reducer;
