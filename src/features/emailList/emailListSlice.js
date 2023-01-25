@@ -21,7 +21,6 @@ const emailListSlice = createSlice({
             state.readEmail.push(action.payload);
         },
         addFavorite: (state, action) => {
-            console.log("add", action.payload);
             state.favoriteEmail.push(action.payload);
         },
         removeFavorite: (state, action) => {

@@ -38,7 +38,7 @@ const EmailList = () => {
             <div>
                 {emails.length > 0 ? (
                     filterEmail(emails).map((email) => (
-                        <EmailListCard {...email} />
+                        <EmailListCard {...email} key={email.id} />
                     ))
                 ) : (
                     <span>loading</span>
