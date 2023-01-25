@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getEmailBody } from "../../features/emailBody/emailBodySlice";
-import { addRead } from "../../features/emailList/emailListSlice";
+import {
+    addRead,
+    toggleViewMode,
+} from "../../features/emailList/emailListSlice";
 import Avatar from "../avatar/Avatar";
 import DateComponent from "../dateComponent/DateComponent";
 import "./EmailListCard.css";
@@ -15,6 +18,7 @@ const EmailListCard = ({ id, from, subject, shortDescription, date }) => {
     const clickHandler = () => {
         dispatch(addRead(id));
         dispatch(getEmailBody(id));
+        dispatch(toggleViewMode());
     };
 
     const isThere = (arr, id) => {

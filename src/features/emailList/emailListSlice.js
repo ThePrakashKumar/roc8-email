@@ -6,6 +6,7 @@ const initialState = {
     emails: [],
     readEmail: [],
     favoriteEmail: [],
+    viewMode: false,
 };
 
 export const getEmail = createAsyncThunk("emailList/getEmail", () =>
@@ -22,6 +23,9 @@ const emailListSlice = createSlice({
         addFavorite: (state, action) => {
             state.favoriteEmail.push(action.payload);
         },
+        toggleViewMode: (state) => {
+            state.viewMode = true;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -34,5 +38,5 @@ const emailListSlice = createSlice({
     },
 });
 
-export const { addRead, addFavorite } = emailListSlice.actions;
+export const { addRead, addFavorite, toggleViewMode } = emailListSlice.actions;
 export default emailListSlice.reducer;
