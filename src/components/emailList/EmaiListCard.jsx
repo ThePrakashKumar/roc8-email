@@ -8,7 +8,7 @@ import Avatar from "../avatar/Avatar";
 import DateComponent from "../dateComponent/DateComponent";
 import "./EmailListCard.css";
 
-const EmailListCard = ({ id, from, subject, shortDescription, date }) => {
+const EmailListCard = ({ id, from, subject, short_description, date }) => {
     const dispatch = useDispatch();
 
     const { readEmail, favoriteEmail } = useSelector(
@@ -42,7 +42,10 @@ const EmailListCard = ({ id, from, subject, shortDescription, date }) => {
                 <p className="emailList-card_subject">
                     Subject: <span className="bold-text">{subject}</span>
                 </p>
-                <p className="emailList-card_description">{shortDescription}</p>
+                <p className="emailList-card_right_short-description">
+                    {short_description}
+                </p>
+
                 <div className="emailList-card_date-container">
                     <DateComponent date={date} />
                     <p className="emailList-card_favorite">
