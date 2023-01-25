@@ -15,6 +15,8 @@ const EmailListCard = ({ id, from, subject, short_description, date }) => {
         (state) => state.emailList
     );
 
+    const { viewMode } = useSelector((state) => state.emailList);
+
     const clickHandler = () => {
         dispatch(addRead(id));
         dispatch(getEmailBody(id));
@@ -28,8 +30,10 @@ const EmailListCard = ({ id, from, subject, short_description, date }) => {
     return (
         <div
             onClick={clickHandler}
-            className="emailList-card"
-            style={{ background: isThere(readEmail, id) && "#F2F2F2" }}
+            className={`emailList-card ${viewMode && "emailList-card-show"}`}
+            style={{
+                background: isThere(readEmail, id) && "#F2F2F2",
+            }}
         >
             <div className="emailList-card_left-container">
                 <Avatar name={from.name} />

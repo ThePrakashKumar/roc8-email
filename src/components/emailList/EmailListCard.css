@@ -8,11 +8,18 @@
     cursor: pointer;
 }
 
+.emailList-card-show {
+    width: 30vw;
+}
+
 .emailList-card_right-container {
+    width: 80%;
     margin-left: 15px;
 }
 
-.emailList-card_right_short-description {
+.emailList-card_right-container > p {
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 

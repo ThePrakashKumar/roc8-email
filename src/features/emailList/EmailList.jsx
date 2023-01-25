@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import "./EmailList.css";
 import EmailListCard from "../../components/emailList/EmaiListCard";
 import { getEmail } from "./emailListSlice";
 const EmailList = () => {
@@ -34,16 +35,14 @@ const EmailList = () => {
     };
 
     return (
-        <div>
-            <div>
-                {emails.length > 0 ? (
-                    filterEmail(emails).map((email) => (
-                        <EmailListCard {...email} key={email.id} />
-                    ))
-                ) : (
-                    <span>loading</span>
-                )}
-            </div>
+        <div className="emailList">
+            {emails.length > 0 ? (
+                filterEmail(emails).map((email) => (
+                    <EmailListCard {...email} key={email.id} />
+                ))
+            ) : (
+                <span>loading</span>
+            )}
         </div>
     );
 };
